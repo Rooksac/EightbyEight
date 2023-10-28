@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  lesson_id: 1
+  completed: false
+  lesson_grade: 1
+  notes: MyString
+
+two:
+  student_id: 1
+  lesson_id: 1
+  completed: false
+  lesson_grade: 1
+  notes: MyString
