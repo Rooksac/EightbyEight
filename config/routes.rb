@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'lessons/index'
-  get 'lessons/show'
+  get 'lessons', to: "lessons#index"
+  get 'lessons/:id', to: "lessons#show"
   get 'lessons/create'
   get 'lessons/update'
   get 'lessons/destroy'
@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get 'student_lessons/create'
   get 'student_lessons/update'
   get 'student_lessons/destroy'
-  get 'games/index'
-  get 'games/show'
+  get 'games', to: "games#index"
+  get 'games/:id', to: "games#show"
   get 'games/create'
   get 'games/update'
   get 'games/destroy'
