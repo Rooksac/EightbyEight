@@ -1,8 +1,14 @@
 class ClubsController < ApplicationController
-  def index
-  end
+  
+  before_action :find_club, only: [:show, :update, :destroy]
 
+  def index
+    clubs = Club.all
+    render json: clubs
+  end
+  
   def show
+    render json: @club
   end
 
   def create
@@ -12,5 +18,15 @@ class ClubsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private 
+
+  def find_club
+    @club = Club.find(params[:id])
+  end
+
+  def club_params
+    params.permit(:club_name, :school, :meet_time, :instructor_id)
   end
 end

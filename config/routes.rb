@@ -14,18 +14,18 @@ Rails.application.routes.draw do
   get 'games/create'
   get 'games/update'
   get 'games/destroy'
-  get 'clubs/index'
-  get 'clubs/show'
+  get '/clubs', to: "clubs#index"
+  get 'clubs/:id', to: "clubs#show"
   get 'clubs/create'
   get 'clubs/update'
   get 'clubs/destroy'
-  get 'students/index'
+  get '/students', to: "students#index"
   get 'students/create'
-  get 'students/show'
+  get '/students/:id', to: "students#show"
   get 'students/update'
   get 'students/destroy'
   get 'instructors/create'
-  get 'instructors/read'
+  get 'instructors/:id', to: "instructors#show"
   get 'instructors/update'
   get 'instructors/destroy'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
