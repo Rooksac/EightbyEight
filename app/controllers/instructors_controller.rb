@@ -8,7 +8,7 @@ class InstructorsController < ApplicationController
   end
 
   def show
-    render json: @instructor
+    render json: @instructor, include: ['clubs', 'clubs.students']
   end
 
   def update
