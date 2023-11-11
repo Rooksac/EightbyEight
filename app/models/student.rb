@@ -27,7 +27,7 @@ class Student < ApplicationRecord
     def win_rate_white
         total_games_as_white = games_as_white.count
         return 0 if total_games_as_white.zero?
-        total_games_as_white.count/games_as_white.where(result: 'White').count.to_f
+        total_games_as_white/games_as_white.where(result: 'White').count.to_f
     end
 
     def win_rate_black
