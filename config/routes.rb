@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'clubs', to: "clubs#index"
   get 'clubs/:id', to: "clubs#show"
   get 'students', to: "students#index"
+  post 'students', to: "students#create"
   get 'students/:id', to: "students#show"
   get 'instructors/:id', to: "instructors#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
