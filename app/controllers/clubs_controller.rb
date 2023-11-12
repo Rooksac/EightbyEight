@@ -12,9 +12,13 @@ class ClubsController < ApplicationController
   end
 
   def create
+    club = Club.create!(club_params)
+    render json: club
   end
 
   def update
+    @club.update!(club_params)
+    render json: @club
   end
 
   def destroy

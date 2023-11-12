@@ -16,6 +16,8 @@ class StudentsController < ApplicationController
   end
 
   def update
+    @student.update!(student_params)
+    render json: @student
   end
 
   def destroy
