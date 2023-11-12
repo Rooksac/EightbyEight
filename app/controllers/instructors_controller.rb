@@ -5,6 +5,8 @@ class InstructorsController < ApplicationController
   
 
   def create
+    instructor = Instructor.create!(instructor_params)
+    render json: instructor
   end
 
   def show

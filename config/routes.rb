@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   get 'games/:id', to: "games#show"
   get 'clubs', to: "clubs#index"
   get 'clubs/:id', to: "clubs#show"
+  post 'clubs', to: "clubs#create"
+  patch 'clubs', to: "clubs#update"
   get 'students', to: "students#index"
   post 'students', to: "students#create"
+  patch 'students', to: "students#update"
   get 'students/:id', to: "students#show"
   get 'instructors/:id', to: "instructors#show"
+  post 'instructors', to: "instructors#create"
+  post 'student_lessons', to: "student_lessons#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
