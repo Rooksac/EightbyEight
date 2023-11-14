@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'students/:id', to: "students#show"
   get 'instructors/:id', to: "instructors#show"
   post 'instructors', to: "instructors#create"
+  post 'login', to: "instructors#login"
+  get 'me', to: "instructors#me"
   post 'student_lessons', to: "student_lessons#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
