@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
       if(headers)
           token = headers.split(' ')[1]
           cur_id = JWT.decode(token, secret_key, true, algorithm: 'HS256')
-          @current_user = User.find_by(id: cur_id[0]["user_id"])
+          @current_user = Instructor.find_by(id: cur_id[0]["user_id"])
           @current_user
       end 
     end 

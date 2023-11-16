@@ -26,14 +26,21 @@ class InstructorsController < ApplicationController
   end
 
   def me
-    render json: {user: @current_user}, status: :ok
+    render json: {user: InstructorSerializer.new(@current_user)}, status: :ok
   end
 
   def update
   end
 
   def destroy
+    @instructor.destroy!
+    head :no_content
   end
+
+  def logout 
+    @current_user = nil
+    head :no_content
+  end 
 
   private 
 

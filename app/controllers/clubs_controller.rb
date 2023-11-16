@@ -22,6 +22,8 @@ class ClubsController < ApplicationController
   end
 
   def destroy
+    @club.destroy!
+    head :no_content
   end
 
   private 
