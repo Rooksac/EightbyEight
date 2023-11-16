@@ -21,6 +21,8 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    @student.destroy!
+    head :no_content
   end
 
   private 
