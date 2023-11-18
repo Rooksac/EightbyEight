@@ -12,7 +12,7 @@ class InstructorsController < ApplicationController
         #create token for front end
         token = JWT.encode({user_id: @user.id}, secret_key, 'HS256')
         #pass user instance and token to front end
-        render json: {user: InstructorSerializer.new(@user), token: token}
+        render json: {user: InstructorSerializer.new(@user, include:  ['clubs', 'clubs.students']), token: token}
     end 
   end
 
@@ -26,7 +26,7 @@ class InstructorsController < ApplicationController
   end
 
   def me
-    render json: {user: InstructorSerializer.new(@current_user)}, status: :ok
+    render json: {user: InstructorSerializer.new(@current_user, include:  ['clubs', 'clubs.students'])}, status: :ok
   end
 
   def update
