@@ -7,6 +7,7 @@ class Club < ApplicationRecord
 
         top_3_students_with_wins = top_3_students.map do |student|
             {
+              id: student.id
               student: student.student_name,
               wins: student.total_wins
             }

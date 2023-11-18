@@ -1,7 +1,7 @@
 class InstructorsController < ApplicationController
 
   before_action :find_instructor, only: [:show, :update, :destroy]
-  skip_before_action :authorized, only: [:create, :login]
+  skip_before_action :authorized, only: [:create, :login, :show]
 
   def login #for /login
     #find by username from body
@@ -26,7 +26,7 @@ class InstructorsController < ApplicationController
   end
 
   def me
-    render json: {user: InstructorSerializer.new(@current_user, include:  ['clubs', 'clubs.students'])}, status: :ok
+    render json: {user: InstructorSerializer.new(@user, include:  ['clubs', 'clubs.students'])}, status: :ok
   end
 
   def update
