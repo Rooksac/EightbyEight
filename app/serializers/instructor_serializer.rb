@@ -10,4 +10,6 @@ class InstructorSerializer < ActiveModel::Serializer
       club_data
     end
   end
+
+  
 end

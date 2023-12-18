@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'instructors', to: "instructors#create"
   delete 'instructors/:id', to: "instructors#destroy"
   post 'login', to: "instructors#login"
-  get 'logout', to: "instructors#logout"
+  delete 'logout', to: "instructors#logout"
   get 'me', to: "instructors#me"
   post 'student_lessons', to: "student_lessons#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
