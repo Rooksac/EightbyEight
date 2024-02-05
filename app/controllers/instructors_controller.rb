@@ -1,7 +1,7 @@
 class InstructorsController < ApplicationController
 
   before_action :find_instructor, only: [:show, :update, :destroy]
-  skip_before_action :authorized, only: [:create, :login, :show]
+  skip_before_action :authorized, only: [:create, :login, :show, :logout]
 
   def login #for /login
     #find by username from body
