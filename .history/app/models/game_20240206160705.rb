@@ -9,9 +9,8 @@ class Game < ApplicationRecord
         }
     end
 
-    def self.in_progress(club_id)
-        joins('LEFT JOIN students ON games.white = students.id OR games.black = students.id')
-      .where('students.club_id = ? AND games.result IS NULL', club_id)
+    def in_progress(club_id)
+        Game.joins(student: :club).where(clubs: { id: club_id }).where(result: nil)
     end
 
 end

@@ -1,7 +1,6 @@
 class ClubsController < ApplicationController
   
   before_action :find_club, only: [:show, :update, :destroy]
-  # skip_before_action :authorized, only: [:index]
 
   def index
     clubs = Club.all
@@ -23,8 +22,10 @@ class ClubsController < ApplicationController
   end
 
   def destroy
-    @club.destroy!
+    @club = Club.find(params[:id])
+    @club.destroy
     head :no_content
+    end
   end
 
   private 

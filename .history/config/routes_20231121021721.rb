@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   get 'lessons/:id', to: "lessons#show"
   get 'games', to: "games#index"
   get 'games/:id', to: "games#show"
-  get 'games/student_games/:id', to: "games#student_games"
-  post 'games', to: "games#create"
-  get 'games/in_progress/:id', to: "games#in_progress"
   get 'clubs', to: "clubs#index"
   get 'clubs/:id', to: "clubs#show"
   post 'clubs', to: "clubs#create"
@@ -20,7 +17,7 @@ Rails.application.routes.draw do
   post 'instructors', to: "instructors#create"
   delete 'instructors/:id', to: "instructors#destroy"
   post 'login', to: "instructors#login"
-  delete 'logout', to: "instructors#logout"
+  get 'logout', to: "instructors#logout"
   get 'me', to: "instructors#me"
   post 'student_lessons', to: "student_lessons#create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

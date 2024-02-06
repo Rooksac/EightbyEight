@@ -34,6 +34,11 @@ class GamesController < ApplicationController
     render json: student.games
   end
 
+  def in_progress
+    games = Game.in_progress(params[:id])
+    render json: games
+  end
+
   private 
 
   def find_game

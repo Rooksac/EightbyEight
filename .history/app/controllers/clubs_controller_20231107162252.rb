@@ -1,7 +1,7 @@
 class ClubsController < ApplicationController
   
   before_action :find_club, only: [:show, :update, :destroy]
-  # skip_before_action :authorized, only: [:index]
+  before_action :find_students, only: [:show]
 
   def index
     clubs = Club.all
@@ -9,28 +9,33 @@ class ClubsController < ApplicationController
   end
   
   def show
-    render json: @club
+    render json: {club: @club, students: @students}
   end
 
   def create
-    club = Club.create!(club_params)
-    render json: club
   end
 
   def update
-    @club.update!(club_params)
-    render json: @club
   end
 
   def destroy
-    @club.destroy!
-    head :no_content
   end
 
   private 
 
   def find_club
     @club = Club.find(params[:id])
+  end
+
+  def students
+    @club = Club.find(params[:id])
+
+    if @club
+      @students = @club.students
+      render json: @students
+    else
+      render json: { error: 'Club not found' }, status: :not_found
+    end
   end
 
   def club_params
