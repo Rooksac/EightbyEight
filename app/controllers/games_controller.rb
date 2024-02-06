@@ -13,6 +13,14 @@ class GamesController < ApplicationController
   end
 
   def create
+    created_games = []
+    for game in params[:games] do
+      print game
+      new_game = Game.create!(white: game[0]['id'], black:game[1]['id'], result: nil)
+      created_games.push(new_game)
+    end
+
+    render json: created_games
   end
 
   def update
@@ -33,7 +41,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.permit(:white, :black, :result)
+    params.permit(:white, :black, :result, :games)
   end
 
 end

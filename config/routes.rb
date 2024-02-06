@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'games', to: "games#index"
   get 'games/:id', to: "games#show"
   get 'games/student_games/:id', to: "games#student_games"
+  post 'games', to: "games#create"
   get 'clubs', to: "clubs#index"
   get 'clubs/:id', to: "clubs#show"
   post 'clubs', to: "clubs#create"
