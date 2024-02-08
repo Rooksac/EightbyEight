@@ -10,7 +10,7 @@ class InstructorsController < ApplicationController
     if (@user && @user.authenticate(params[:password]))
       puts("Serialized Data: #{InstructorSerializer.new(@user).as_json}")
         #create token for front end
-        token = JWT.encode({user_id: @user.id}, , 'HS256')
+        token = JWT.encode({user_id: @user.id}, secret_key, 'HS256')
         #pass user instance and token to front end
         render json: {user: InstructorSerializer.new(@user), token: token}
     end 

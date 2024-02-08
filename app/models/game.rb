@@ -11,7 +11,7 @@ class Game < ApplicationRecord
 
     def self.in_progress(club_id)
         joins('LEFT JOIN students ON games.white = students.id OR games.black = students.id')
-      .where('students.club_id = ? AND games.result IS NULL', club_id)
+      .where('students.club_id = ? AND games.result IS NULL', club_id).distinct
     end
 
 end
