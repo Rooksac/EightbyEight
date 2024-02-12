@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'games/student_games/:id', to: "games#student_games"
   post 'games', to: "games#create"
   get 'games/in_progress/:id', to: "games#in_progress"
+  delete 'games/:id', to: "games#destroy"
+  patch 'games/:id', to: "games#update"
   get 'clubs', to: "clubs#index"
   get 'clubs/:id', to: "clubs#show"
   post 'clubs', to: "clubs#create"

@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
+
   before_action :find_game, only: [:show, :update, :destroy]
-  # skip_before_action :authorized, only: [:student_games,]
+  skip_before_action :authorized, only: [:student_games]
 
   def index
     games = Game.all
@@ -13,21 +14,18 @@ class GamesController < ApplicationController
 
   def create
     created_games = []
-    params[:games].each do |game_params|
-      new_game = Game.create!(white: game_params[:white], black: game_params[:black], result: nil)
+    for game in params[:games] do
+      print game
+      new_game = Game.create!(white: game[0]['id'], black:game[1]['id'], result: nil)
       created_games.push(new_game)
     end
 
     render json: created_games
-  rescue ActiveRecord::RecordInvalid => e
-    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def update
     @game.update!(game_params)
     render json: @game
-  rescue ActiveRecord::RecordInvalid => e
-    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def destroy
@@ -52,6 +50,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:result)
+    params.permit(:white, :black, :result, :games)
   end
+
 end
