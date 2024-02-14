@@ -8,11 +8,11 @@ class InstructorsController < ApplicationController
     @user = Instructor.find_by(name: params[:name])
     #check if user exists and password matches password digest
     if (@user && @user.authenticate(params[:password]))
-        puts("user found")
+      puts("Serialized Data: #{InstructorSerializer.new(@user).as_json}")
         #create token for front end
         token = JWT.encode({user_id: @user.id}, secret_key, 'HS256')
         #pass user instance and token to front end
-        render json: {user: InstructorSerializer.new(@user, include:  ['clubs', 'clubs.students']), token: token}
+        render json: {user: InstructorSerializer.new(@user), token: token}
     end 
   end
 

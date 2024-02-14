@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :find_game, only: [:show, :update, :destroy]
-  # skip_before_action :authorized, only: [:student_games,]
+  skip_before_action :authorized, only: [:student_games,]
 
   def index
     games = Game.all
