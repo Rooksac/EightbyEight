@@ -13,8 +13,8 @@ class GamesController < ApplicationController
 
   def create
     created_games = []
-    params[:games].each do |game_params|
-      new_game = Game.create!(white: game_params[:white], black: game_params[:black], result: nil)
+    for game in params[:games] do
+      new_game = Game.create!(white: game[0]['id'], black:game[1]['id'], result: nil)
       created_games.push(new_game)
     end
 
