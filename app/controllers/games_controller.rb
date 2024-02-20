@@ -19,8 +19,6 @@ class GamesController < ApplicationController
     end
 
     render json: created_games
-  rescue ActiveRecord::RecordInvalid => e
-    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def update
@@ -52,6 +50,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:result)
+    params.permit(:white, :black, :result, :games)
   end
+  
 end
