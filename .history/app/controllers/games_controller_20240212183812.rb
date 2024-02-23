@@ -13,12 +13,14 @@ class GamesController < ApplicationController
 
   def create
     created_games = []
-    for game in params[:games] do
-      new_game = Game.create!(white: game[0]['id'], black:game[1]['id'], result: nil)
+    params[:games].each do |game_params|
+      new_game = Game.create!(white: game_params[:white], black: game_params[:black], result: nil)
       created_games.push(new_game)
     end
 
     render json: created_games
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def update
@@ -50,7 +52,6 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.permit(:white, :black, :result, :games)
+    params.require(:game).permit(:result)
   end
-  
 end

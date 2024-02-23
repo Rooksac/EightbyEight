@@ -9,8 +9,7 @@ class Club < ApplicationRecord
             {
               id: student.id,
               student: student.student_name,
-              wins: student.total_wins,
-              win_rate: student.win_rate,
+              wins: student.total_wins
             }
           end
 
