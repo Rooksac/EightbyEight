@@ -6,8 +6,15 @@ class StudentLessonsController < ApplicationController
   end
 
   def create
-    student_lesson = StudentLesson.create!(student_lesson_params)
-    render json: student_lesson
+    #example input: {lesson:{lesson object}, students: [{student object}, {student object} ...], grade: integer}
+    student_lessons = []
+    lesson = params[:lesson]
+    grade = params[:grade]
+    for student in params[:students] do
+      completed_lesson = Student_Lesson.create!(grade_lesson(student, lesson, grade))
+      student_lessons.push(completed_lesson)
+    end
+    render json: student_lessons
   end
 
   def update
@@ -19,6 +26,6 @@ class StudentLessonsController < ApplicationController
   private
 
   def student_lesson_params
-    params.permit(:completed, :lesson_grade, :notes, :student_id, :lesson_id)
+    params.permit(:lesson_grade, :notes, :student_id, :lesson_id)
   end
 end

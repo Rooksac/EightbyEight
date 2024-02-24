@@ -10,6 +10,12 @@ class LessonsController < ApplicationController
     render json: @lesson
   end
 
+  def club_lessons
+    instructor = Instructor.find(params[:id])
+    lessons = instructor.lessons
+    render json: lessons
+  end
+
   def create
   end
 
