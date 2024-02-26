@@ -6,11 +6,11 @@ class StudentLessonsController < ApplicationController
   end
 
   def create
-    #example input: {lesson:{lesson object}, students: [{student object}, {student object} ...], grade: integer}
+    #example input: {lesson:{lesson object}, students: [{student object}, {student object} ...]}
     student_lessons = []
     lesson = params[:lesson]
-    grade = params[:grade]
     for student in params[:students] do
+      grade = student.grade
       completed_lesson = Student_Lesson.create!(grade_lesson(student, lesson, grade))
       student_lessons.push(completed_lesson)
     end

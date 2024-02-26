@@ -7,7 +7,7 @@ class Student < ApplicationRecord
 
 
     def games
-        games_as_white + games_as_black
+        Game.where('white = ? OR black = ?', id, id)
     end
 
     def number_of_games_played
@@ -18,10 +18,7 @@ class Student < ApplicationRecord
         total_games = number_of_games_played
         return 0 if total_games.zero?
 
-        winning_games_as_white = games_as_white.where(result: 'White').count
-        winning_games_as_black = games_as_black.where(result: 'Black').count
-
-        (winning_games_as_white + winning_games_as_black) / total_games.to_f
+        total_wins / total_games.to_f
     end
 
     def win_rate_white
@@ -40,8 +37,9 @@ class Student < ApplicationRecord
     def total_wins
         winning_games_as_white = games_as_white.where(result: 'White').count
         winning_games_as_black = games_as_black.where(result: 'Black').count
+        drawn_games = self.games.where(result: 'Draw').count * 0.5
 
-        winning_games_as_black + winning_games_as_white
+        winning_games_as_black + winning_games_as_white + drawn_games
     end
 
 end
