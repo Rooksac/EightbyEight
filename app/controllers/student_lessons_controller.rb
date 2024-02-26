@@ -9,9 +9,10 @@ class StudentLessonsController < ApplicationController
     #example input: {lesson:{lesson object}, students: [{student object}, {student object} ...]}
     student_lessons = []
     lesson = params[:lesson]
+    print(lesson)
     for student in params[:students] do
-      grade = student.grade
-      completed_lesson = Student_Lesson.create!(grade_lesson(student, lesson, grade))
+      score = student[:score]
+      completed_lesson = StudentLesson.create!(grade_lesson(student, lesson, score))
       student_lessons.push(completed_lesson)
     end
     render json: student_lessons
@@ -27,5 +28,11 @@ class StudentLessonsController < ApplicationController
 
   def student_lesson_params
     params.permit(:lesson_grade, :notes, :student_id, :lesson_id)
+  end
+
+  def grade_lesson(student, lesson, score)
+    print('score:', score, 'questions:', lesson['number_of_questions'])
+    grade = (score.to_f/lesson['number_of_questions'].to_f) * 100
+    {lesson_grade: grade, student_id: student['id'], lesson_id: lesson['id'], notes: lesson['notes']}
   end
 end
