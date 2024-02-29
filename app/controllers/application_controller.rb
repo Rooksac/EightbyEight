@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-    # before_action :authorized
+    before_action :authorized
 
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :validation_error_response
