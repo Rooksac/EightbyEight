@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'lessons', to: "lessons#index"
   get 'lessons/:id', to: "lessons#show"
+  post 'lessons', to: "lessons#create"
   get 'instructor_lessons/:id', to: "lessons#instructor_lessons"
   get 'games', to: "games#index"
   get 'games/:id', to: "games#show"
