@@ -37,7 +37,7 @@ class Student < ApplicationRecord
         total_games_as_black = games_as_black.count
         return 0 if total_games_as_black.zero?
 
-        games_as_black.where(result: 'Black').count.to_f / total_games_as_black * 100
+        total_games_as_black/games_as_black.where(result: 'Black').count.to_f
     end
 
     def total_wins

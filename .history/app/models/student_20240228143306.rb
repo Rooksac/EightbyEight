@@ -21,23 +21,17 @@ class Student < ApplicationRecord
         total_wins / total_games.to_f
     end
 
-    # def num_white_wins
-    #     games_as_white.where(result: 'White').count
-
-    # def num_black_wins
-    #     games_as_black.where(result: 'Black').count
-
     def win_rate_white
         total_games_as_white = games_as_white.count
         return 0 if total_games_as_white.zero?
-        games_as_white.where(result: 'White').count.to_f / total_games_as_white * 100
+        total_games_as_white/games_as_white.where(result: 'White').count.to_f
     end
 
     def win_rate_black
         total_games_as_black = games_as_black.count
         return 0 if total_games_as_black.zero?
 
-        games_as_black.where(result: 'Black').count.to_f / total_games_as_black * 100
+        total_games_as_black/games_as_black.where(result: 'Black').count.to_f
     end
 
     def total_wins
