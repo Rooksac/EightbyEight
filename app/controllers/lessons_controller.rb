@@ -17,6 +17,8 @@ class LessonsController < ApplicationController
   end
 
   def create
+    lesson = Lesson.create!(lesson_params)
+    render json: lesson
   end
 
   def update
@@ -38,7 +40,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.permit(:lesson_name, :number_of_questions, :level)
+    params.permit(:lesson_name, :number_of_questions, :source, :instructor_id, :description)
   end
 
 end
