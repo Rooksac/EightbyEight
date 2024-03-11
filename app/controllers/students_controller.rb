@@ -25,6 +25,12 @@ class StudentsController < ApplicationController
     head :no_content
   end
 
+  def club_students_missing_lesson
+    club = Club.find(params[:clubId])
+    students = club.students_missing_lesson(params[:id])
+    render json: students
+  end
+
   private 
 
   def find_student

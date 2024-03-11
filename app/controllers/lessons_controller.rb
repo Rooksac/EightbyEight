@@ -1,6 +1,7 @@
 class LessonsController < ApplicationController
 
   before_action :find_lesson, only: [:show, :update, :destroy]
+
   def index
     lessons = Lesson.all
     render json: lessons
@@ -33,6 +34,11 @@ class LessonsController < ApplicationController
     render json: lessons 
   end
 
+  def lesson_students
+    lesson = Lesson.find(params[:id])
+    render json: lesson.students_scores(params[:clubId])
+  end
+  
   private 
 
   def find_lesson

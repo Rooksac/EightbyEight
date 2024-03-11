@@ -48,4 +48,8 @@ class Student < ApplicationRecord
         winning_games_as_black + winning_games_as_white + drawn_games
     end
 
+    def completed_lessons
+        self.lessons.map {|lesson| lesson.id}
+    end
+
 end
