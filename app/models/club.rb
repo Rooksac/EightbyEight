@@ -18,4 +18,9 @@ class Club < ApplicationRecord
   
     top_3_students_with_wins
   end
+
+  def students_missing_lesson(lesson_id)
+    completed_lesson_ids = Lesson.find(lesson_id).students.pluck(:id)
+    self.students.where.not(id: completed_lesson_ids)
+  end
 end
