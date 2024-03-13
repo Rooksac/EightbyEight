@@ -3,7 +3,13 @@ class Lesson < ApplicationRecord
     has_many :students, through: :student_lessons
     belongs_to :instructor
     
-    #change level to source
-    #add description column
-    #add instructor_id and associate
+    def students_scores(clubId)
+        students_scores = self.students.where(club_id: clubId).includes(:student_lessons).map do |student|
+          {
+            id: student.id,
+            name: student.student_name, 
+            score: student.student_lessons.find_by(lesson: self)&.lesson_grade
+          }
+        end
+    end
 end
