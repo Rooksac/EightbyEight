@@ -54,4 +54,14 @@ class Student < ApplicationRecord
         self.lessons.map {|lesson| lesson.id}
     end
 
+    def lesson_scores
+        self.student_lessons.includes(:lesson).map do |student_lesson|
+            {
+                lesson_name: student_lesson.lesson.lesson_name,
+                lesson_source: student_lesson.lesson.source,
+                grade: student_lesson.lesson_grade
+            }
+        end
+    end
+
 end

@@ -31,6 +31,12 @@ class StudentsController < ApplicationController
     render json: students
   end
 
+  def lesson_scores
+    student = Student.find(params[:id])
+    scores = student.lesson_scores
+    render json: scores
+  end
+
   private 
 
   def find_student
