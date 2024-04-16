@@ -24,8 +24,8 @@ class GamesController < ApplicationController
   def update
     @game.update!(game_params)
     render json: @game
-  rescue ActiveRecord::RecordInvalid => e
-    render json: { error: e.message }, status: :unprocessable_entity
+  # rescue ActiveRecord::RecordInvalid => e
+  #   render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def destroy
