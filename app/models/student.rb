@@ -59,7 +59,8 @@ class Student < ApplicationRecord
             {
                 lesson_name: student_lesson.lesson.lesson_name,
                 lesson_source: student_lesson.lesson.source,
-                grade: student_lesson.lesson_grade
+                grade: student_lesson.lesson_grade,
+                number_of_questions: student_lesson.lesson.number_of_questions
             }
         end
     end
