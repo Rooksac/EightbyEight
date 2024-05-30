@@ -15,7 +15,7 @@ class StudentLessonsController < ApplicationController
         student_id: student[:id], 
         lesson_id: lesson[:id], 
         lesson_grade: student[:score],
-        notes: student['notes']
+        notes: student[:note]
         )
       student_lessons.push(completed_lesson)
     end
