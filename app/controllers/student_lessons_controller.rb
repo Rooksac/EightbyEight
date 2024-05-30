@@ -11,7 +11,12 @@ class StudentLessonsController < ApplicationController
     lesson = params[:lesson]
     print(lesson)
     for student in params[:students] do
-      completed_lesson = StudentLesson.create!(student_id: student[:id], lesson_id: lesson[:id], lesson_grade: student[:score])
+      completed_lesson = StudentLesson.create!(
+        student_id: student[:id], 
+        lesson_id: lesson[:id], 
+        lesson_grade: student[:score],
+        notes: student['notes']
+        )
       student_lessons.push(completed_lesson)
     end
     render json: student_lessons
