@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'lessons', to: "lessons#index"
   get 'lessons/:id', to: "lessons#show"
+  patch 'lessons/:id', to: "lessons#update"
   post 'lessons', to: "lessons#create"
+  delete 'lessons/:id', to: "lessons#destroy"
   get 'lesson_students/:clubId/:id', to: 'lessons#lesson_students'
   get 'addstudentlessons/:clubId/:id', to: 'students#club_students_missing_lesson'
   get 'instructor_lessons/:id', to: "lessons#instructor_lessons"

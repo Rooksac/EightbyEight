@@ -1,6 +1,6 @@
 class Club < ApplicationRecord
     belongs_to :instructor
-    has_many :students
+    has_many :students, dependent: :destroy
 
     def top_3
     top_3_students = students.sort_by do |student|
