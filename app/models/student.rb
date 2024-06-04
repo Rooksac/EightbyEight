@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
     belongs_to :club
-    has_many :student_lessons
+    has_many :student_lessons, dependent: :destroy
     has_many :lessons, through: :student_lessons
     has_many :games_as_white, class_name: 'Game', foreign_key: 'white'
     has_many :games_as_black, class_name: 'Game', foreign_key: 'black'

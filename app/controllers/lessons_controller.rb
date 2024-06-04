@@ -23,9 +23,14 @@ class LessonsController < ApplicationController
   end
 
   def update
+    lesson = @lesson
+    lesson.update!(lesson_params)
+    render json: lesson
   end
 
   def destroy
+    @lesson.destroy!
+    head :no_content
   end
 
   def instructor_lessons

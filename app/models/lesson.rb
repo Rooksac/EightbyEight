@@ -1,5 +1,5 @@
 class Lesson < ApplicationRecord
-    has_many :student_lessons
+    has_many :student_lessons, dependent: :destroy
     has_many :students, through: :student_lessons
     belongs_to :instructor
     
