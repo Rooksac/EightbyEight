@@ -5,6 +5,7 @@ class Lesson < ApplicationRecord
     
     def students_scores(clubId)
       students_scores = self.students.where(club_id: clubId).includes(:student_lessons).map do |student|
+        student_lesson = student.student_lessons.find_by(lesson_id: self.id)
         {
           id: student.id,
           name: student.student_name, 

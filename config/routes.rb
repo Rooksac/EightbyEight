@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   delete 'students/:id', to: "students#destroy"
   get 'students/:id', to: "students#show"
   get 'students/lesson_scores/:id', to: "students#lesson_scores"
+  patch 'update_student_scores', to: 'student_lessons#update_student_scores'
   get 'instructors/:id', to: "instructors#show"
   post 'instructors', to: "instructors#create"
   delete 'instructors/:id', to: "instructors#destroy"

@@ -28,6 +28,20 @@ class LessonsController < ApplicationController
     render json: lesson
   end
 
+  def update_student_scores
+    lesson = Lesson.find(params[:lessonId])
+    student_scores = params[:students]
+
+    students_scores.each do |student_data|
+      student_lesson = StudentLesson.find_by(student_id: student_data[:id], lesson_id: lesson.id)
+      if student_lesson
+        student_lesson.update!(lesson_grade: student_data[:score], notes: student_data[:note])
+      end
+    end
+    
+    render json: {message: "Student scores updated successfully"}, status: :ok
+  end
+
   def destroy
     @lesson.destroy!
     head :no_content
