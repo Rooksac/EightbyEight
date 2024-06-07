@@ -27,6 +27,11 @@ class ClubsController < ApplicationController
     head :no_content
   end
 
+  def club_names
+    clubs = Instructor.find(params[:instructorId]).clubs
+    render json: clubs, each_serializer: ClubNamesSerializer
+  end
+
   private 
 
   def find_club
