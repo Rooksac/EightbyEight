@@ -21,6 +21,13 @@ class Student < ApplicationRecord
         total_wins / total_games.to_f
     end
 
+    def average_grade
+        total_lesson_scores = self.student_lessons.sum(&:percentage)
+        total_lessons = self.lessons.size 
+        return 0 if total_lessons == 0
+        total_lesson_scores/total_lessons
+    end
+
     def num_white_wins
         games_as_white.where(result: 'White').count
     end
