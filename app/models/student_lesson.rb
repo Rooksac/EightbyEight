@@ -6,4 +6,8 @@ class StudentLesson < ApplicationRecord
 
     # notes
     validates :notes, length: {maximum: 500}, allow_blank: true
+
+    def percentage
+        (self.lesson_grade/self.lesson.number_of_questions.to_f * 100)
+    end
 end
