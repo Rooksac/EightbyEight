@@ -37,6 +37,12 @@ class StudentsController < ApplicationController
     render json: scores
   end
 
+  def transfer
+    student = Student.find(params[:studentId])
+    student.update!(club_id: params[:clubId])
+    render json: student 
+  end
+
   private 
 
   def find_student
