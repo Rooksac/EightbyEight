@@ -21,6 +21,10 @@ class Student < ApplicationRecord
         total_wins / total_games.to_f
     end
 
+    def number_of_lessons_completed
+        self.student_lessons.count
+    end
+
     def average_grade
         total_lesson_scores = self.student_lessons.sum(&:percentage)
         total_lessons = self.lessons.size 
@@ -71,6 +75,16 @@ class Student < ApplicationRecord
                 note: student_lesson.notes
             }
         end
+    end
+
+    def most_recent_lesson
+        most_recent_student_lesson = self.student_lessons.order(updated_at: :desc).first
+        return 0 if self.student_lessons.size == 0
+        lesson = most_recent_student_lesson&.lesson
+        {
+            lesson_name: lesson.lesson_name,
+            grade: most_recent_student_lesson.percentage
+        }
     end
 
 end
