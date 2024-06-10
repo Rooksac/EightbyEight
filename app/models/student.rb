@@ -72,7 +72,8 @@ class Student < ApplicationRecord
                 lesson_source: student_lesson.lesson.source,
                 grade: student_lesson.lesson_grade,
                 number_of_questions: student_lesson.lesson.number_of_questions,
-                note: student_lesson.notes
+                note: student_lesson.notes,
+                student_lesson_id: student_lesson.id
             }
         end
     end

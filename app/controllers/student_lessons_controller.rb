@@ -23,6 +23,9 @@ class StudentLessonsController < ApplicationController
   end
 
   def update
+    student_lesson = StudentLesson.find(params[:id])
+    student_lesson.update!(student_lesson_params)
+    render json: student_lesson
   end
 
   def destroy

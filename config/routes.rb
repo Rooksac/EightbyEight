@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   delete 'logout', to: "instructors#logout"
   get 'me', to: "instructors#me"
   post 'student_lessons', to: "student_lessons#create"
+  patch 'student_lessons/:id', to: "student_lessons#update"
   get 'club_lessons/:id', to: "lessons#club_lessons"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
