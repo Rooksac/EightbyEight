@@ -48,6 +48,13 @@ class GamesController < ApplicationController
     render json: games
   end
 
+  def club_games
+    games_in_progress = Game.in_progress(params[:id])
+    completed_games = Game.completed(params[:id])
+    render json: {gamesInProgress: games_in_progress, completedGames: completed_games}
+  end
+
+
   private 
 
   def find_game

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'games', to: "games#create"
   get 'games/in_progress/:id', to: "games#in_progress"
   get 'games/completed/:id', to: "games#completed"
+  get 'games/club_games/:id', to: "games#club_games"
   delete 'games/:id', to: "games#destroy"
   patch 'games/:id', to: "games#update"
   get 'clubs', to: "clubs#index"
