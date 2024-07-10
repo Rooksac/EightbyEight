@@ -51,7 +51,11 @@ class GamesController < ApplicationController
   def club_games
     games_in_progress = Game.in_progress(params[:id])
     completed_games = Game.completed(params[:id])
-    render json: {gamesInProgress: games_in_progress, completedGames: completed_games}
+    render json: { 
+                  gamesInProgress: ActiveModel::Serializer::CollectionSerializer.new(games_in_progress, serializer: GameSerializer),
+                  completedGames: ActiveModel::Serializer::CollectionSerializer.new(completed_games, serializer: GameSerializer)
+                }
+    
   end
 
 

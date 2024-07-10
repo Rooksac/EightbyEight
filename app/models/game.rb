@@ -18,4 +18,8 @@ class Game < ApplicationRecord
         .where('students.club_id = ?', club_id).distinct
     end
 
+    def formatted_date
+        self.created_at.strftime("%B %d, %Y")
+      end
+
 end
