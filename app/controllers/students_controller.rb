@@ -50,6 +50,6 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.permit(:student_name, :grade, :club_id)
+    params.permit(:student_name, :grade, :club_id, :station)
   end
 end
